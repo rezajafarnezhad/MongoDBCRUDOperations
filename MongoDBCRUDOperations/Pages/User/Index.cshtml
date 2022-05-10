@@ -1,0 +1,37 @@
+﻿@page
+@model MongoDBCRUDOperations.Pages.User.IndexModel
+@{
+    ViewData["Title"] = "Users List";
+    Layout = "Shared/_Layout";
+}
+<h4>
+    List Users
+</h4>
+
+
+<a asp-page="./Create" class="btn btn-primary">Create User</a>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">fullNamr</th>
+        <th scope="col">FirstName</th>
+        <th scope="col">LastName</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Users)
+    {
+        <tr>
+            <td>@item.FullName</td>
+            <td>@item.Name</td>
+            <td>@item.Family</td>
+            <td>
+                <a asp-page="./Edit" class="btn btn-secondary" asp-route-Id="@item.Id">Edit</a>
+                <a asp-page="./Delete" class="btn btn-danger" asp-route-Id="@item.Id">delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
